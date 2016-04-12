@@ -1,4 +1,5 @@
 library(xlsx)
+library(dplyr)
 setwd("~/LL/Trading - GPC/Primus/Reference/Stock LIsts/PrimusScripts")
 setwd("~/LL/Trading - GPC/Primus/Reference/Stock LIsts")
 data = read.csv("NYSEComplete.csv")
@@ -14,6 +15,7 @@ data <- data[!grepl(".Pharmaceuticals|Gas|Coal|Health Insurance|Biotech.|Retail 
                     Oil", data$Industry),]
 data <- data[!grepl("PIMCO|Shipping|Gold|Restaurant|Restaurant.|S\\.A\\.|Chile|Brasil|N\\.V\\.|
                     S\\.A\\.B\\.|PLC|MLP|S\\.P\\.A\\.|Energy", data$Name),]
+data <- data[!grepl("\\^", data$Symbol),]
 
 
 write.xlsx2(data, "NYSE.xlsx")
